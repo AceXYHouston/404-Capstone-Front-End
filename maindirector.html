@@ -263,11 +263,11 @@
 <div class="row mb-4">
   <!-- Project Completion Chart -->
   <div class="col-md-6">
-    <div class="p-3" style="background-color: #F4EFE1; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.05);">
-      <h5>Project Completion Metrics</h5>
-      <canvas id="projectCompletionChart"></canvas>
-    </div>
-  </div>
+    <div class="p-3" style="background-color: #DACCE6; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.05); cursor: pointer;">
+  <h5>Project Completion Metrics</h5>
+  <canvas id="projectCompletionChart"></canvas>
+</div>
+</div>
 
   <!-- Calendar beside Project Chart -->
   <div class="col-md-6">
@@ -316,14 +316,14 @@
    <!-- Row 2: Research Funding & Partnerships -->
   <div class="row mb-4">
     <div class="col-md-6">
-      <div class="p-3" style="background-color: #F4EFE1; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.05);">
+      <div class="p-3" style="background-color: #DACCE6; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.05);">
         <h5>Research Funding Allocation</h5>
         <canvas id="fundingAllocationChart"></canvas>
       </div>
     </div>
 
     <div class="col-md-6">
-      <div class="p-3" style="background-color: #F4EFE1; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.05);">
+      <div class="p-3" style="background-color: #DACCE6; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.05);">
         <h5>Partnership Development Stages</h5>
         <canvas id="partnershipStagesChart"></canvas>
       </div>
@@ -331,9 +331,100 @@
   </div>
 </div>
  
+<div class="modal fade" id="projectStatusModal" tabindex="-1" aria-labelledby="projectStatusModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="projectStatusModalLabel">Project Status</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h6 id="modalStatusTitle" class="fw-bold"></h6>
+        <ul class="list-group" id="modalStatusList">
+        <div class="mb-4">
+          <h6 class="text-success">Completed</h6>
+          <ul class="list-group">
+            <li class="list-group-item">Project A</li>
+            <li class="list-group-item">Project B</li>
+            <li class="list-group-item">Project C</li>
+          </ul>
+        </div>
+
+        <!-- In Progress Projects -->
+        <div class="mb-4">
+          <h6 class="text-warning">In Progress</h6>
+          <ul class="list-group">
+            <li class="list-group-item">Project D</li>
+            <li class="list-group-item">Project E</li>
+          </ul>
+        </div>
+
+        <!-- Not Started Projects -->
+        <div class="mb-4">
+          <h6 class="text-danger">Not Started</h6>
+          <ul class="list-group">
+            <li class="list-group-item">Project F</li>
+          </ul>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
-    
+   <script>
+  // Match doughnut chart slice colors
+  const statusColors = {
+    "Completed": "rgb(158, 119, 203)",     // Purple
+    "In Progress": "rgb(119, 203, 161)",   // Green
+    "Not Started": "rgb(203, 119, 138)"    // Red/Pink
+  };
+
+  // Sample project data for each status
+  const projectStatusData = {
+    "Completed": ["Project A", "Project B", "Project C"],
+    "In Progress": ["Project D", "Project E"],
+    "Not Started": ["Project F"]
+  };
+
+  const modalStatusTitle = document.getElementById("modalStatusTitle");
+  const modalStatusList = document.getElementById("modalStatusList");
+
+  // Chart click logic
+  document.getElementById('projectCompletionChart').onclick = function(evt) {
+    const activePoints = projectCompletionChart.getElementsAtEventForMode(evt, 'nearest', { intersect: true }, true);
+
+    if (activePoints.length) {
+      const index = activePoints[0].index;
+      const label = projectCompletionChart.data.labels[index];
+      const projects = projectStatusData[label] || [];
+      const color = statusColors[label] || '#000';
+
+      // Set modal title and color
+      modalStatusTitle.textContent = label;
+      modalStatusTitle.style.color = color;
+
+      // Clear list and add new items
+      modalStatusList.innerHTML = "";
+      projects.forEach(project => {
+        const listItem = document.createElement("li");
+        listItem.className = "list-group-item";
+        listItem.textContent = project;
+        listItem.style.color = color;
+        modalStatusList.appendChild(listItem);
+      });
+
+      // Show modal
+      const modal = new bootstrap.Modal(document.getElementById('projectStatusModal'));
+      modal.show();
+    }
+  };
+</script>
+
+
   <script>
     const lineChart = new Chart(document.getElementById('lineChart'), {
     type: 'line',
