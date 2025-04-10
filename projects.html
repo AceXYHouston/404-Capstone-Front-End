@@ -124,47 +124,63 @@
           <button class="btn btn-jmu-outline" data-bs-toggle="modal" data-bs-target="#addProjectModal"><i class="bi bi-plus-circle me-1"></i>Add New Project</button>
         </div>
 
-        <div class="project-card" data-bs-toggle="modal" data-bs-target="#projectModal1">
-          <h5>Datamine App Prototype</h5>
-          <p><strong>Team:</strong> Kiran Kan, Sarah John</p>
-          <div class="d-flex justify-content-between align-items-center mb-2">
-            <span class="badge bg-warning text-dark">On Going</span>
-            <span>Due: May 25, 2024</span>
-          </div>
-          <div class="progress">
-            <div class="progress-bar bg-warning" style="width: 60%"></div>
-          </div>
-          <p>Progress: 60%</p>
-        </div>
-
-        <div class="project-card" data-bs-toggle="modal" data-bs-target="#projectModal2">
-          <h5>Social App User Flow</h5>
-          <p><strong>Team:</strong> Ella Brown</p>
-          <div class="d-flex justify-content-between align-items-center mb-2">
-            <span class="badge bg-info text-dark">In Review</span>
-            <span>Due: May 28, 2024</span>
-          </div>
-          <div class="progress">
-            <div class="progress-bar bg-info" style="width: 80%"></div>
-          </div>
-          <p>Progress: 80%</p>
-        </div>
-
-        <div class="project-card" data-bs-toggle="modal" data-bs-target="#projectModal3">
-          <h5>Learning Tool Dashboard</h5>
-          <p><strong>Team:</strong> Raj Patel</p>
-          <div class="d-flex justify-content-between align-items-center mb-2">
-            <span class="badge bg-success">Completed</span>
-            <span>Due: April 10, 2024</span>
-          </div>
-          <div class="progress">
-            <div class="progress-bar bg-success" style="width: 100%"></div>
-          </div>
-          <p>Progress: 100%</p>
-        </div>
-      </div>
-    </div>
+ <div class="project-card" data-bs-toggle="modal" data-bs-target="#projectModal1">
+  <div class="d-flex justify-content-between align-items-center mb-2">
+    <h5 class="mb-0">Datamine App Prototype</h5>
+    <button class="btn btn-jmu-outline btn-sm" data-bs-toggle="modal" data-bs-target="#addTaskModal" onclick="event.stopPropagation();">
+      <i class="bi bi-plus-circle me-1"></i>Add New Tasks
+    </button>
   </div>
+
+  <p><strong>Team:</strong> Kiran Kan, Sarah John</p>
+  <div class="d-flex justify-content-between align-items-center mb-2">
+    <span class="badge bg-warning text-dark">On Going</span>
+    <span>Due: May 25, 2025</span>
+  </div>
+  <div class="progress">
+    <div class="progress-bar bg-warning" style="width: 60%"></div>
+  </div>
+  <p>Progress: 60%</p>
+</div>
+
+ <div class="project-card" data-bs-toggle="modal" data-bs-target="#projectModal2">
+  <div class="d-flex justify-content-between align-items-center mb-2">
+    <h5 class="mb-0">Social App User Flow</h5>
+    <button class="btn btn-jmu-outline btn-sm" data-bs-toggle="modal" data-bs-target="#addTaskModal1" onclick="event.stopPropagation();">
+      <i class="bi bi-plus-circle me-1"></i>Add New Tasks
+    </button>
+  </div>
+
+  <p><strong>Team:</strong> Anna Smith</p>
+  <div class="d-flex justify-content-between align-items-center mb-2">
+     <span class="badge bg-info text-dark">In Review</span>
+    <span>Due: May 28, 2025</span>
+  </div>
+  <div class="progress">
+    <div class="progress-bar bg-info" style="width: 80%"></div>
+  </div>
+  <p>Progress: 80%</p>
+</div>
+
+ <div class="project-card" data-bs-toggle="modal" data-bs-target="#projectModal3">
+  <div class="d-flex justify-content-between align-items-center mb-2">
+    <h5 class="mb-0">Learning Tool Dashboard</h5>
+    <button class="btn btn-jmu-outline btn-sm" data-bs-toggle="modal" data-bs-target="#addTaskModal2" onclick="event.stopPropagation();">
+      <i class="bi bi-plus-circle me-1"></i>Add New Tasks
+    </button>
+  </div>
+
+  <p><strong>Team:</strong>Raj Patel</p>
+  <div class="d-flex justify-content-between align-items-center mb-2">
+    <span class="badge bg-success">Completed</span>
+    <span>Due: April 10, 2025</span>
+  </div>
+  <div class="progress">
+    <div class="progress-bar bg-success" style="width: 100%"></div>
+  </div>
+  <p>Progress: 100%</p>
+</div>
+
 
   <div class="modal fade" id="addProjectModal" tabindex="-1" aria-labelledby="addProjectModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -190,6 +206,102 @@
             <div class="mb-3">
               <label for="progress" class="form-label">Progress (%)</label>
               <input type="number" class="form-control" id="progress" max="100" min="0">
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--tasks label-->
+    <div class="modal fade" id="addTaskModal" tabindex="-1" aria-labelledby="addTaskModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addTaskModalLabel">Add New Task</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="projectName" class="form-label">Task Name</label>
+              <input type="text" class="form-control" id="projectName">
+            </div>
+            <div class="mb-3">
+              <label for="projectName" class="form-label">Task Description</label>
+              <input type="text" class="form-control" id="projectName">
+            </div>
+             <div class="mb-3">
+              <label for="dueDate" class="form-label">Due Date</label>
+              <input type="date" class="form-control" id="dueDate">
+            </div>
+            <div class="mb-3">
+              <label for="teamMembers" class="form-label">Team Members</label>
+              <input type="text" class="form-control" id="teamMembers">
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+<!--tasks modal 1-->
+     <div class="modal fade" id="addTaskModal1" tabindex="-1" aria-labelledby="addTaskModal1Label" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addTaskModal1Label">Add New Task</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="projectName" class="form-label">Task Name</label>
+              <input type="text" class="form-control" id="projectName">
+            </div>
+            <div class="mb-3">
+              <label for="projectName" class="form-label">Task Description</label>
+              <input type="text" class="form-control" id="projectName">
+            </div>
+             <div class="mb-3">
+              <label for="dueDate" class="form-label">Due Date</label>
+              <input type="date" class="form-control" id="dueDate">
+            </div>
+            <div class="mb-3">
+              <label for="teamMembers" class="form-label">Team Members</label>
+              <input type="text" class="form-control" id="teamMembers">
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+<!--tasks modal 2-->
+     <div class="modal fade" id="addTaskModal2" tabindex="-1" aria-labelledby="addTaskModal2Label" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addTaskModal2Label">Add New Task</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="projectName" class="form-label">Task Name</label>
+              <input type="text" class="form-control" id="projectName">
+            </div>
+            <div class="mb-3">
+              <label for="projectName" class="form-label">Task Description</label>
+              <input type="text" class="form-control" id="projectName">
+            </div>
+             <div class="mb-3">
+              <label for="dueDate" class="form-label">Due Date</label>
+              <input type="date" class="form-control" id="dueDate">
+            </div>
+            <div class="mb-3">
+              <label for="teamMembers" class="form-label">Team Members</label>
+              <input type="text" class="form-control" id="teamMembers">
             </div>
             <button type="submit" class="btn btn-primary">Save</button>
           </form>
